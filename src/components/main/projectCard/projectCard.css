@@ -1,0 +1,60 @@
+.project{
+    text-align: center;
+}
+.project_bg{
+    background-color: var(--first-color-second);
+    padding-top: 3rem;
+}
+.project_title{
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--mb-0-75);
+}
+.project_description{
+    margin-bottom: var(--mb-0-5);
+}
+.project_title,
+.project_description{
+    color: #FFF;
+}
+.project_img{
+    width: 232px;
+    justify-self: center;
+}
+
+/*--------------------------BreackPoints---------------------*/
+/*---------------FOR SMALL DEVICES-------------*/
+@media screen and (max-width: 350px) {
+    
+    .project_img{
+        width: 200px;
+    }
+}
+/*-------------------FOR MEDIUM DEVICES--------------*/
+@media screen and (min-width: 568px) {
+   .project_container
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+
+}
+@media screen and (min-width: 768px) {
+    
+   .project{
+    text-align: initial;
+   }
+   .project_bg{
+    background: none;
+   }
+   .project_container{
+    background-color: var(--first-color-second);
+    border-radius: 1rem;
+    padding: 3rem 2.5rem 0;
+    grid-template-columns: 1fr max-content;
+    column-gap: 3rem;
+   }
+   .project_data{
+    padding-top: .8rem;
+   }
+  
+}
