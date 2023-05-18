@@ -12,7 +12,7 @@
 /build
 
 # misc
-README.MD
+
 .env
 .DS_Store
 .env.local
