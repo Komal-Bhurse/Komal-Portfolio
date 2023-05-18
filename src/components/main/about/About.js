@@ -29,8 +29,7 @@ function About() {
                     </div>
                     <div className="about_buttons">
 
-
-                        <a download="" href="#home" className="button button--flex">
+                        <a download="" href="./Komal Bhurse Resume.pdf" className="button button--flex">
                             download CV <i className="uil uil-download-alt button--flex"></i>
                         </a>
                     </div>
