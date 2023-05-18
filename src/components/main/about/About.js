@@ -1,5 +1,6 @@
 import React from "react";
 import about from "./ab.png";
+import resume from "./Komal Bhurse Resume.pdf"
 import "./about.css";
 
 function About() {
@@ -29,7 +30,7 @@ function About() {
                     </div>
                     <div className="about_buttons">
 
-                        <a download="" href="./Komal Bhurse Resume.pdf" className="button button--flex">
+                        <a download="" href={resume} className="button button--flex">
                             download CV <i className="uil uil-download-alt button--flex"></i>
                         </a>
                     </div>
