@@ -1,6 +1,6 @@
 import React from "react";
 import about from "./ab.png";
-import resume from "./Komal Bhurse Resume.pdf"
+import resume from "./Komal-Bhurse Resume.pdf"
 import "./about.css";
 
 function About() {
