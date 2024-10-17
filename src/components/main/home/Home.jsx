@@ -42,7 +42,7 @@ function Home() {
                 Focus on building a beautiful and responsive Websites.
               </p>
 
-              <a href="mailto:tim@gmail.com" className="button buttton--flex">
+              <a href="mailto:komalbhurse3@gmail.com" className="button buttton--flex">
                 Hired Me <i className="uil uil-message button_icon"></i>
               </a>
             </div>

@@ -1,17 +1,40 @@
 import React,{ useRef } from "react";
 import emailjs from '@emailjs/browser';
-
+import toast from "react-hot-toast";
 import "./contact.css";
+import {useFormik} from 'formik'
+import * as Yup from 'yup'
+
+const formSchema = Yup.object().shape({
+  name: Yup.string().required("Plaese fill your Name"),
+  email: Yup.string().required("Plaese fill your Email"),
+  project: Yup.string().required("Plaese fill your Project"),
+  massage: Yup.string().required("Plaese fill your Message"),
+})
 
 function Contact() {
-    
-    const form = useRef();
-    const sendEmail = (e) => {
-        e.preventDefault();
-    
-        emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID,process.env.REACT_APP_EMAILJS_TEMPLATE_ID, form.current,process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
-          e.target.reset()
-      };
+
+  const formRef = useRef(null)
+    const form = useFormik({
+      initialValues:{
+         name:"",
+         email:"",
+         project:"",
+         massage:""
+      },
+      validationSchema:formSchema,
+      onSubmit: async(values,{resetForm})=>{
+           
+       const res = await emailjs.sendForm(REACT_APP_EMAILJS_SERVICE_ID,REACT_APP_EMAILJS_TEMPLATE_ID,formRef.current,REACT_APP_EMAILJS_PUBLIC_KEY)
+       if(res.status === 200){
+          toast.success("Email Sent Succefully")
+          resetForm()
+       }else{
+        toast.error("Sorry..! Email not sent")
+       }
+       
+      }
+    })
 
   return (
     <>
@@ -42,27 +65,42 @@ function Contact() {
               </div>
             </div>
           </div>
-          <form ref={form} onSubmit={sendEmail} className="contact_form grid">
+          <form ref={formRef} onSubmit={form.handleSubmit} className="contact_form grid">
             <div className="contact_inputs grid">
+              <div>
               <div className="contact_content">
                 <label htmlFor="" className="contact_label">
                   Name
                 </label>
-                <input type="text" name="name" className="contact_input" />
+                <input type="text" name="name" value={form.values.name} onChange={form.handleChange} onBlur={form.handleBlur} className="contact_input" />
+                
               </div>
+              {form.touched && form.errors && <p style={{color:"red"}}>{form.errors.name}</p>}
+              </div>
+              <div>
               <div className="contact_content">
                 <label htmlFor="" className="contact_label">
                   Email
                 </label>
-                <input type="email" name="email" className="contact_input" />
+                <input type="email" name="email" value={form.values.email} onChange={form.handleChange} onBlur={form.handleBlur} className="contact_input" />
+
+              </div>
+              {form.touched && form.errors && <p style={{color:"red"}}>{form.errors.email}</p>}
+
               </div>
             </div>
+            <div>
             <div className="contact_content">
               <label htmlFor="" className="contact_label">
                 Project
               </label>
-              <input type="text" name="project" className="contact_input" />
+              <input type="text" name="project" value={form.values.project} onChange={form.handleChange} onBlur={form.handleBlur} className="contact_input" />
+
             </div>
+            {form.touched && form.errors && <p style={{color:"red"}}>{form.errors.project}</p>}
+
+            </div>
+            <div>
             <div className="contact_content">
               <label htmlFor="" className="contact_label">
                 Massage
@@ -72,8 +110,13 @@ function Contact() {
                 id=""
                 cols="0"
                 rows="7"
+                value={form.values.massage} onChange={form.handleChange} onBlur={form.handleBlur}
                 className="contact_input"
               ></textarea>
+
+            </div>
+            {form.touched && form.errors && <p style={{color:"red"}}>{form.errors.massage}</p>}
+
             </div>
             <div>
               <button type="submit" className="button button--flex">

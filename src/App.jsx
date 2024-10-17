@@ -9,15 +9,13 @@ import ProjectCard from "./components/main/projectCard/ProjectCard";
 import Skills from "./components/main/skill/Skills";
 import Qualification from "./components/main/qualification/Qualification";
 
-
-import "./app.css";
+import {Toaster } from 'react-hot-toast'
 
 function App() {
   
   return (
     <>
-  
-    <Header/>
+     <Header/>
     <main className="main">    
     <Home/>
     <About/>
@@ -28,8 +26,9 @@ function App() {
     <Contact/>
     </main>
     <Footer/>
+    <Toaster/>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
