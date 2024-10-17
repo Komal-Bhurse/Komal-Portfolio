@@ -25,7 +25,7 @@ function Contact() {
       validationSchema:formSchema,
       onSubmit: async(values,{resetForm})=>{
            
-       const res = await emailjs.sendForm(REACT_APP_EMAILJS_SERVICE_ID,REACT_APP_EMAILJS_TEMPLATE_ID,formRef.current,REACT_APP_EMAILJS_PUBLIC_KEY)
+       const res = await emailjs.sendForm(import.meta.env.VITE_EMAILJS_SERVICE_ID,import.meta.env.VITE_EMAILJS_TEMPLATE_ID,formRef.current,import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
        if(res.status === 200){
           toast.success("Email Sent Succefully")
           resetForm()
